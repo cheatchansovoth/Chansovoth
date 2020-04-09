@@ -1,0 +1,126 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_systemLayout.cshtml";
+}
+
+<div class="background">
+    <div class="cjzx6k-1 jbvVcN">
+        <div class="cjzx6k-2 iqsatL">
+            <h1 id="top">Our Insuranace</h1>
+            <p id="top-text">Start your journey with us</p>
+            <div class="slider">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="~/Content/image/banner2.jpg" alt="Los Angeles">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/Content/image/banner4.jpg" alt="Chicago">
+                        </div>
+
+                        <div class="item">
+                            <img src="~/Content/image/banner5.jpg" alt="New York">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="col1">
+                    <i class="fa fa-car" style="font-size:59px"></i>
+                    <h3>Car insurance</h3>
+                    <p>
+                        Buy online and save $50*
+                        Full cover for accidental loss or damage to
+                        <br>your car as well as accidental damage to someone else’s car.
+                    </p>
+                    <a href="/Insurance/carinformation" class="btn btn-info" title="State business insurance" alt="Find a business insurance solution that works for you" )">
+                        Find
+                        out more
+                    </a>
+                </div>
+                <div class="col2">
+                    <i class="fa fa-motorcycle" style="font-size:59px"></i>
+
+                    <h3>Motorbike</h3>
+                    <p>
+                        Buy online and save $50*
+                        Full cover for accidental loss or damage to your
+                        car as well as accidental damage to someone else’s car.
+                    </p>
+                    <a href="/Insurance/motorinformation" class="btn btn-info" title="State business insurance" alt="Find a business insurance solution that works for you" )">
+                        Find
+                        out more
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="video-wrap">
+    <div class="ffs-video">
+        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">
+            Amanda's personal claim story
+        </h1>
+        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+        <p class="wow fadeInLeft" data-wow-delay="0.3s">
+            We’re here for when the unexpected happens. So, when Amanda’s dad was hospitalised after a car accident, she stepped in to sort his claim.
+
+            “I was put in touch with Lisa in the Mt Maunganui Branch, and she was amazing, absolutely amazing right from the word go.”
+
+            “Whenever I spoke to Lisa, the first thing she’d say is ‘how’s your dad doing?’”
+
+            At AMI, we understand that claims go hand in hand with unfortunate circumstances, so we handle each claim with compassion and kindness.
+        </p>
+        <br>
+    </div>
+    <div class="col-lg-6 wow fadeIn">
+        <div class="embed-responsive embed-responsive-16by9 wow fadeInRight">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3Clz4OPbVs8"
+                    style="height:380px;width:500px"></iframe>
+        </div>
+    </div>
+</div>
+
+<div class="bottom">
+    <div class="col-sm-6 col-xs-12">
+        <h2 class="section-heading">Ready to get a quote online?</h2>
+        <p>You can get a quote in two minutes and buy online in five - easy peasy.</p>
+        <ol type="1">
+            <li>Tell us about the car you want to insure</li>
+            <li>Get your quote, choose your excess and select optional extras</li>
+            <li>
+                If you’re happy with your quote, enter a few more details to confirm and buy your
+                policy
+            </li>
+            <li>Get on with your day! </li>
+        </ol>
+        <a href="https://secure.ami.co.nz/css/car/step1" class="btn btn-info" title="Get a Car insurance quote online" onclick="dataLayer.push({'event': 'trackEvent','eventDetails.category': 'car_insurance', 'eventDetails.action': 'get_quote', 'eventDetails.label': 'get_a_quote_banner'})">
+            Get your quote
+        </a>
+    </div>
+    <div class="img-lazy">
+        <img src="~/Content/image/Ready_to_quote_image_woman.png" alt="Alternate Text" />
+
+    </div>
+
+</div>

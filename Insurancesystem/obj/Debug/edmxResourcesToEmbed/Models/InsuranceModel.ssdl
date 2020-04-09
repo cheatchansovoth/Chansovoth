@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InsuranceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeofUse" Type="nvarchar" MaxLength="20" />
+    <Property Name="Car" Type="int" />
+    <Property Name="CarValue" Type="float" />
+  </EntityType>
+  <EntityType Name="Claim">
+    <Key>
+      <PropertyRef Name="ClaimID" />
+    </Key>
+    <Property Name="ClaimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClaimName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nature" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="200" />
+    <Property Name="Date" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="InsuranceUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MotorBike">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeOfUse" Type="nvarchar" MaxLength="50" />
+    <Property Name="MotorRegisternumber" Type="int" />
+    <Property Name="MotorValue" Type="int" />
+  </EntityType>
+  <EntityContainer Name="InsuranceDBModelStoreContainer">
+    <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InsuranceUser" EntityType="Self.InsuranceUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MotorBike" EntityType="Self.MotorBike" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
