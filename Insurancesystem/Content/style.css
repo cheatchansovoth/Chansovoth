@@ -126,6 +126,10 @@ h1 {
     background-position: 50% 50%;
     background-size: cover;
 }
+    .background img
+    {
+        width:720px;
+    }
 #top-text {
     font-family: 'Indie Flower', cursive;
     font-size:20px;
@@ -133,8 +137,7 @@ h1 {
 }
 .slider
 {
-    width:720px;
-    height:360px;
+    width:1080px;
     background-color:white;
     margin:200px;
 }
@@ -168,7 +171,6 @@ h1 {
     background-color: #cbd2d2;
     padding: 50px;
 }
-
 .location {
     width: 50%;
 }
@@ -376,4 +378,28 @@ ul li {
 #havor
 {
    display:inline-grid;
+}
+.page-footer font-small cyan darken-3 {
+    background-color: black !important;
+}
+body p {
+    font-family: arial,sans-serif;
+}
+.cuscontact 
+{
+    width: 100%;
+    display: flex;
+}
+.img-Contac
+{
+    width:30%;
+}
+.cusform
+{
+    margin:20px;
+    width:70%;
+}
+.form-horizontal
+{
+    width:720px;
 }

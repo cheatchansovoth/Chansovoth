@@ -1,10 +1,11 @@
-﻿
+﻿@model Insurancesystem.Models.CusContact
 @{
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/_systemLayout.cshtml";
 }
-    <div class="about-contain">
-        <div class="contactbody">
+<div class="about-contain">
+    <div class="contactbody">
+        <div class="contact-body">
             <div class="contact">
                 <h1>Call 0800 275 269 for general enquiries</h1>
                 <p>Free phone, available 8am - 8pm Monday to Friday, and 9am - 6pm Saturday, Sunday and on public holidays.</p>
@@ -14,27 +15,80 @@
                 From overseas, call +64 4 931 82091.
 
             </div>
-            <div class="img-Contact">
-                <img src="~/Content/image/stockfresh_8245621_female-customer-services-agent-in-call-center_sizeS.jpg" alt="Alternate Text" />
-            </div>
-        </div>
-        <div class="nextbody">
-            <div class="img2">
-                <img src="~/Content/image/callcenter.jpg" alt="Alternate Text" />
-            </div>
-            <div>
-                <h1>
-                    Something lost or stolen? Suspected fraud?
-                    Call 0800 735 901
-                </h1>
-                <br />
-                <p>Free phone, available 24 hours a day, 365 days of the year (including public holidays).</p>
-                <br />
-                <p>
-                    For any lost or stolen EFTPOS, debit or credit cards; NetGuard cards or tokens; and/or mobile devices. Also if you think your credit card or debit card has been used fraudulently.
-                    From overseas, call +64 4 473 5901. (International toll charges apply, or you can call us collect from a landline.)
-                </p>
-            </div>
+            <br />
+            <br />
+            <div class="cuscontact">
+                <div class="img-Contact">
+                    <img src="~/Content/image/stockfresh_8245621_female-customer-services-agent-in-call-center_sizeS.jpg" alt="Alternate Text" class="animated bounceInRight" />
+                </div>
+                <div class="cusform">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
 
+                        <div class="form-horizontal">
+                            <h4>More information leave us your contact</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
+
+</div>
+<div class="nextbody">
+
+    <div>
+        <h1>
+            Something lost or stolen? Suspected fraud?
+            Call 0800 735 901
+        </h1>
+        <br />
+        <p>Free phone, available 24 hours a day, 365 days of the year (including public holidays).</p>
+        <br />
+        <p>
+            For any lost or stolen EFTPOS, debit or credit cards; NetGuard cards or tokens; and/or mobile devices. Also if you think your credit card or debit card has been used fraudulently.
+            From overseas, call +64 4 473 5901. (International toll charges apply, or you can call us collect from a landline.)
+        </p>
+    </div>
+    <div class="img2">
+        <img src="~/Content/image/callcenter.jpg" alt="Alternate Text" class="animated bounceInRight" />
+    </div>
+
+</div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
