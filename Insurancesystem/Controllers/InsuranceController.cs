@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Web;
 using System.Linq;
 using Insurancesystem.Models;
+using Insurancesystem.ViewModel;
 
 namespace Insurancesystem.Controllers
 {
     public class InsuranceController : Controller
     {
-        InsuranceDBEntities5 db = new InsuranceDBEntities5();
+        InsuranceDBEntities6 db = new InsuranceDBEntities6();
         // GET: Insurance
         public ActionResult Index()
         {
@@ -54,6 +55,26 @@ namespace Insurancesystem.Controllers
         
         public ActionResult Login()
         {
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(Registerview re)
+        {
+            User user = new User();
+            user.Email = re.Email;
+            user.Firstname = re.Firstname;
+            user.Lastname = re.Lastname;
+            user.Password = re.Password;
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return View();
         }
         

@@ -403,3 +403,15 @@ body p {
 {
     width:720px;
 }
+.navbar.navbar-inverse {
+    background-color: #00838f;
+    border-color: #1c1c1c;
+}
+.navbar-header li 
+{
+    color: #005B88 !important;
+    font-size: 40px;
+}
+#form-register {
+    margin-left: 200px;
+}

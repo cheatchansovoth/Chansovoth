@@ -155,3 +155,4 @@ C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\Micros
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.csproj.CopyComplete
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.dll
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.pdb
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.csprojAssemblyReference.cache
