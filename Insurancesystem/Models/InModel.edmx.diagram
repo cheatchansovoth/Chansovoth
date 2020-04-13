@@ -4,9 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="49e61ac7359c486fbe586e99b677f9e5" Name="Diagram1">
-        <EntityTypeShape EntityType="InsuranceDBModel.CusContact" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="InsuranceDBModel.User" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="11c9cd6343c94778bd4b0ddbb1f896b9" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="InsuranceDBModel.Car" Width="1.5" PointX="3.125" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceDBModel.Claim" Width="1.5" PointX="7" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceDBModel.CusContact" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceDBModel.Motorbike" Width="1.5" PointX="3.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsuranceDBModel.User" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="InsuranceDBModel.Car_KEY" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceDBModel.Claim_KEY" ManuallyRouted="false" />
+        <AssociationConnector Association="InsuranceDBModel.Motorr_KEY" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -135,6 +135,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Car.cs">
+      <DependentUpon>InModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Claim.cs">
+      <DependentUpon>InModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CusContact.cs">
       <DependentUpon>InModel.tt</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Motorbike.cs">
+      <DependentUpon>InModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>InModel.tt</DependentUpon>
     </Compile>
@@ -163,6 +172,10 @@
     <Content Include="App_Data\InsuranceDB.mdf" />
     <Content Include="App_Data\InsuranceDB_log.ldf">
       <DependentUpon>InsuranceDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\TestingData.mdf" />
+    <Content Include="App_Data\TestingData_log.ldf">
+      <DependentUpon>TestingData.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

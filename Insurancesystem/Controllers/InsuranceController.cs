@@ -10,7 +10,7 @@ namespace Insurancesystem.Controllers
 {
     public class InsuranceController : Controller
     {
-        InsuranceDBEntities6 db = new InsuranceDBEntities6();
+        InsuranceDBEntities10 db = new InsuranceDBEntities10();
         // GET: Insurance
         public ActionResult Index()
         {

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestingDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarID" />
+    </Key>
+    <Property Name="CarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeOfUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Car" Type="int" Nullable="false" />
+    <Property Name="CarValue" Type="float" Nullable="false" />
+    <Property Name="CarRegisnumber" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Claim">
+    <Key>
+      <PropertyRef Name="ClaimID" />
+    </Key>
+    <Property Name="ClaimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nature" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Motorbike">
+    <Key>
+      <PropertyRef Name="MotorID" />
+    </Key>
+    <Property Name="MotorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeOfUse" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MotorRegisNumber" Type="int" Nullable="false" />
+    <Property Name="MotorValue" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'Car_KEY' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="Car_KEY" />-->
+  <EntityContainer Name="TestingDataModelStoreContainer">
+    <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motorbike" EntityType="Self.Motorbike" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

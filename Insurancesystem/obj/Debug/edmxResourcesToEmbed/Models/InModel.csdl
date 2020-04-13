@@ -1,5 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="InsuranceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarID" />
+    </Key>
+    <Property Name="CarID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModeOfUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Car1" Type="Int32" Nullable="false" />
+    <Property Name="CarValue" Type="Double" Nullable="false" />
+    <Property Name="CarRegisnumber" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.Car_KEY" FromRole="Car" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Claim">
+    <Key>
+      <PropertyRef Name="ClaimID" />
+    </Key>
+    <Property Name="ClaimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.Claim_KEY" FromRole="Claim" ToRole="User" />
+  </EntityType>
   <EntityType Name="CusContact">
     <Key>
       <PropertyRef Name="CusID" />
@@ -8,6 +31,17 @@
     <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ContactNumber" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Motorbike">
+    <Key>
+      <PropertyRef Name="MotorID" />
+    </Key>
+    <Property Name="MotorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ModeOfUse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MotorRegisNumber" Type="Int32" Nullable="false" />
+    <Property Name="MotorValue" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.Motorr_KEY" FromRole="Motorbike" ToRole="User" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -18,9 +52,63 @@
     <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.Car_KEY" FromRole="User" ToRole="Car" />
+    <NavigationProperty Name="Claims" Relationship="Self.Claim_KEY" FromRole="User" ToRole="Claim" />
+    <NavigationProperty Name="Motorbikes" Relationship="Self.Motorr_KEY" FromRole="User" ToRole="Motorbike" />
   </EntityType>
-  <EntityContainer Name="InsuranceDBEntities6" annotation:LazyLoadingEnabled="true">
+  <Association Name="Car_KEY">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Claim_KEY">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Motorr_KEY">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Motorbike" Type="Self.Motorbike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Motorbike">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InsuranceDBEntities10" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Claims" EntityType="Self.Claim" />
     <EntitySet Name="CusContacts" EntityType="Self.CusContact" />
+    <EntitySet Name="Motorbikes" EntityType="Self.Motorbike" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="Car_KEY" Association="Self.Car_KEY">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="Claim_KEY" Association="Self.Claim_KEY">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Claim" EntitySet="Claims" />
+    </AssociationSet>
+    <AssociationSet Name="Motorr_KEY" Association="Self.Motorr_KEY">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Motorbike" EntitySet="Motorbikes" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

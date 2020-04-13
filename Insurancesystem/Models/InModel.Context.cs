@@ -13,10 +13,10 @@ namespace Insurancesystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InsuranceDBEntities6 : DbContext
+    public partial class InsuranceDBEntities10 : DbContext
     {
-        public InsuranceDBEntities6()
-            : base("name=InsuranceDBEntities6")
+        public InsuranceDBEntities10()
+            : base("name=InsuranceDBEntities10")
         {
         }
     
@@ -25,9 +25,10 @@ namespace Insurancesystem.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Car> Cars { get; set; }
+        public virtual DbSet<Claim> Claims { get; set; }
         public virtual DbSet<CusContact> CusContacts { get; set; }
+        public virtual DbSet<Motorbike> Motorbikes { get; set; }
         public virtual DbSet<User> Users { get; set; }
-
-        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.Registerview> Registerviews { get; set; }
     }
 }

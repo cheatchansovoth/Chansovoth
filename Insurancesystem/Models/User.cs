@@ -14,10 +14,25 @@ namespace Insurancesystem.Models
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Cars = new HashSet<Car>();
+            this.Claims = new HashSet<Claim>();
+            this.Motorbikes = new HashSet<Motorbike>();
+        }
+    
         public int UserID { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Car> Cars { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Claim> Claims { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Motorbike> Motorbikes { get; set; }
     }
 }
