@@ -155,4 +155,11 @@ C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\Micros
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.csproj.CopyComplete
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.dll
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.pdb
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.csproj.CoreCompileInputs.cache
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Net.Http.Formatting.dll
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Web.Http.dll
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Web.Http.WebHost.dll
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Net.Http.Formatting.xml
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Web.Http.xml
+C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\bin\System.Web.Http.WebHost.xml
 C:\Users\Voth\source\repos\Insurancesystem\Chansovoth\Insurancesystem\obj\Debug\Insurancesystem.csprojAssemblyReference.cache

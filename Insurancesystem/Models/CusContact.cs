@@ -15,8 +15,8 @@ namespace Insurancesystem.Models
     public partial class CusContact
     {
         public int CusID { get; set; }
-        public string FullName { get; set; }
+        public string Fullname { get; set; }
         public string Email { get; set; }
-        public int ContactNumber { get; set; }
+        public Nullable<int> ContactNumber { get; set; }
     }
 }

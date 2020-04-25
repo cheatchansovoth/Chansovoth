@@ -2,46 +2,107 @@
 <Schema Namespace="InsuranceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Car">
     <Key>
-      <PropertyRef Name="UserID" />
+      <PropertyRef Name="CarID" />
     </Key>
-    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ModeofUse" Type="nvarchar" MaxLength="20" />
-    <Property Name="Car" Type="int" />
-    <Property Name="CarValue" Type="float" />
+    <Property Name="CarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeOfUse" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Car" Type="int" Nullable="false" />
+    <Property Name="CarValue" Type="float" Nullable="false" />
+    <Property Name="CarRegisternumber" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" />
   </EntityType>
   <EntityType Name="Claim">
     <Key>
       <PropertyRef Name="ClaimID" />
     </Key>
     <Property Name="ClaimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ClaimName" Type="nvarchar" MaxLength="50" />
-    <Property Name="Nature" Type="nvarchar" MaxLength="50" />
-    <Property Name="Location" Type="nvarchar" MaxLength="200" />
-    <Property Name="Date" Type="datetime2" Precision="7" />
+    <Property Name="Nature" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="InsuranceUser">
+  <EntityType Name="CusContact">
+    <Key>
+      <PropertyRef Name="CusID" />
+    </Key>
+    <Property Name="CusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="ContactNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Motorbike">
+    <Key>
+      <PropertyRef Name="MotorID" />
+    </Key>
+    <Property Name="MotorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ModeOfUse" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MotorRegisternumber" Type="int" Nullable="false" />
+    <Property Name="MotorValue" Type="float" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER">
     <Key>
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
-    <Property Name="Username" Type="nvarchar" MaxLength="50" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
-  <EntityType Name="MotorBike">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ModeOfUse" Type="nvarchar" MaxLength="50" />
-    <Property Name="MotorRegisternumber" Type="int" />
-    <Property Name="MotorValue" Type="int" />
-  </EntityType>
+  <Association Name="Car_Key">
+    <End Role="USER" Type="Self.USER" Multiplicity="0..1" />
+    <End Role="Car" Type="Self.Car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Claim_Key">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="Claim" Type="Self.Claim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Claim">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Motor_Key">
+    <End Role="USER" Type="Self.USER" Multiplicity="1" />
+    <End Role="Motorbike" Type="Self.Motorbike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Motorbike">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="InsuranceDBModelStoreContainer">
     <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Claim" EntityType="Self.Claim" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="InsuranceUser" EntityType="Self.InsuranceUser" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="MotorBike" EntityType="Self.MotorBike" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CusContact" EntityType="Self.CusContact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Motorbike" EntityType="Self.Motorbike" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Car_Key" Association="Self.Car_Key">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="Car" EntitySet="Car" />
+    </AssociationSet>
+    <AssociationSet Name="Claim_Key" Association="Self.Claim_Key">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="Claim" EntitySet="Claim" />
+    </AssociationSet>
+    <AssociationSet Name="Motor_Key" Association="Self.Motor_Key">
+      <End Role="USER" EntitySet="USER" />
+      <End Role="Motorbike" EntitySet="Motorbike" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

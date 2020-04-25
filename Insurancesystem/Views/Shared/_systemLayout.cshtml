@@ -32,9 +32,13 @@
                     </ul>
                 </li>
                 <li>@Html.ActionLink("Claim", "Claimform", "Insurance")</li>
+                <li>@Html.ActionLink("MyDetial", "MyDetails", "Insurance")</li>
             </ul>
             <ul class="loginprofile" id="loginprofile">
-                <li id="login">@Html.ActionLink("Login", "Login", "Insurance")</li>
+                <li id="login">
+                    @Html.ActionLink("Login", "LoginMe", "Insurance",new {@id="a-login" }) 
+                    <i class="fa fa-users"></i>
+                            </li>
 
             </ul>
         </div>
@@ -56,27 +60,27 @@
                     <div class="mb-5 flex-center">
 
                         <!-- Facebook -->
-                        <a class="fb-ic">
+                        <a class="fb-ic" href="https://www.facebook.com/">
                             <i class="fa fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!-- Twitter -->
-                        <a class="tw-ic">
+                        <a class="tw-ic" href="https://www.facebook.com/">
                             <i class="fa fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!-- Google +-->
-                        <a class="gplus-ic">
+                        <a class="gplus-ic" href="https://www.facebook.com/">
                             <i class="fa fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!--Linkedin -->
-                        <a class="li-ic">
+                        <a class="li-ic" href="https://www.facebook.com/">
                             <i class="fa fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!--Instagram-->
-                        <a class="ins-ic">
+                        <a class="ins-ic" href="https://www.facebook.com/">
                             <i class="fa fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                         </a>
                         <!--Pinterest-->
-                        <a class="pin-ic">
+                        <a class="pin-ic" href="https://www.facebook.com/">
                             <i class="fa fa-pinterest fa-lg white-text fa-2x"> </i>
                         </a>
                     </div>

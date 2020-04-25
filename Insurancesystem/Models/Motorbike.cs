@@ -16,10 +16,10 @@ namespace Insurancesystem.Models
     {
         public int MotorID { get; set; }
         public string ModeOfUse { get; set; }
-        public int MotorRegisNumber { get; set; }
-        public int MotorValue { get; set; }
+        public int MotorRegisternumber { get; set; }
+        public double MotorValue { get; set; }
         public int UserID { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual USER USER { get; set; }
     }
 }

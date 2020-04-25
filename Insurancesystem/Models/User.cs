@@ -12,10 +12,10 @@ namespace Insurancesystem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class USER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public USER()
         {
             this.Cars = new HashSet<Car>();
             this.Claims = new HashSet<Claim>();
@@ -23,8 +23,8 @@ namespace Insurancesystem.Models
         }
     
         public int UserID { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
     

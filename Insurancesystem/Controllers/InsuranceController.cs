@@ -3,14 +3,17 @@ using System.Web.Mvc;
 using System.Collections.Generic;
 using System.Web;
 using System.Linq;
+using System.Data.Entity;
 using Insurancesystem.Models;
 using Insurancesystem.ViewModel;
+using System.Security.Permissions;
+using System.Web.Security;
 
 namespace Insurancesystem.Controllers
 {
     public class InsuranceController : Controller
     {
-        InsuranceDBEntities10 db = new InsuranceDBEntities10();
+        InsuranceDBEntities1 db = new InsuranceDBEntities1();
         // GET: Insurance
         public ActionResult Index()
         {
@@ -40,6 +43,18 @@ namespace Insurancesystem.Controllers
         {
             return View();
         }
+        private bool isValid(USER user)
+        {
+            return (user.UserID == 4);
+        }
+        [Authorize]
+        public ActionResult Admin(USER u1,Registerview re)
+        {
+            TempData["user"] = re;
+            TempData.Keep();
+            //Create Session
+            return View(db.USERs.ToList());
+        }
         public ActionResult carinformation()
         {
             return View();
@@ -52,11 +67,7 @@ namespace Insurancesystem.Controllers
         {
             return View();
         }
-        
-        public ActionResult Login()
-        {
-            return View();
-        }
+
         public ActionResult Register()
         {
             return View();
@@ -64,18 +75,229 @@ namespace Insurancesystem.Controllers
         [HttpPost]
         public ActionResult Register(Registerview re)
         {
-            User user = new User();
-            user.Email = re.Email;
-            user.Firstname = re.Firstname;
-            user.Lastname = re.Lastname;
-            user.Password = re.Password;
+            //checking duplicate data 
+            int sc = db.USERs.Where(x => x.Email == re.Email).Count();
+            if (sc == 0)
+            {
+                TempData["user"] = re;
+                TempData.Keep();
+                return RedirectToAction("Regcar");
+            }
+            return View(re);
+        }
+        public ActionResult Regcar()
+        {
+            UserCarRegister cr = new UserCarRegister();
+            Registerview r1 = (Registerview)TempData["user"];
+            cr.UserID = r1.UserID;
+            cr.Firstname = r1.Firstname;
+            cr.Lastname = r1.Lastname;
+            cr.Email = r1.Email;
+            cr.Password = r1.Password;
+            cr.Repassword = r1.Repassword;
+            return View(cr);
+        }
+        [HttpPost]
+        public ActionResult Regcar(UserCarRegister uc)
+        {
+            USER u = new USER { FirstName = uc.Firstname, LastName = uc.Lastname, Email = uc.Email, Password = uc.Password };
+            Car car = new Car { ModeOfUse = uc.ModeOfUse, Car1 = uc.Car1, CarValue = uc.CarValue, CarRegisternumber = uc.CarRegisternumber };
+
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.USERs.Add(u);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                car.UserID = u.UserID;
+                db.Cars.Add(car);
+                db.SaveChanges();
+            }
+
+            return View();
+        }
+        public ActionResult MoReig()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult MoReig(Registerview reg)
+        {
+            //checking duplicate data 
+            int sc = db.USERs.Where(x => x.Email == reg.Email).Count();
+            if (sc == 0)
+            {
+                TempData["user"] = reg;
+                TempData.Keep();
+                return RedirectToAction("MotorRegister");
+            }
+            else
+            {
+                return View(reg);
+            }
+        }
+        public ActionResult MotorRegister()
+        {
+            UserMotorRegister u = new UserMotorRegister();
+            Registerview r2 = (Registerview)TempData["user"];
+            u.Firstname = r2.Firstname;
+            u.Lastname = r2.Lastname;
+            u.Email = r2.Email;
+            u.Password = r2.Password;
+            u.Repassword = r2.Repassword;
+            return View(u);
+        }
+        [HttpPost]
+        public ActionResult MotorRegister(UserMotorRegister um)
+        {
+            USER u = new USER { FirstName = um.Firstname, LastName = um.Lastname, Email = um.Email, Password = um.Password };
+            Motorbike mk = new Motorbike { ModeOfUse = um.ModeOfUse, MotorRegisternumber = um.MotorRegisternumber, MotorValue = um.MotorValue };
+            if (ModelState.IsValid)
+            {
+                db.USERs.Add(u);
+                db.SaveChanges();
+                mk.UserID = u.UserID;
+                db.Motorbikes.Add(mk);
+                db.SaveChanges();
+
             }
             return View();
+        }
+        public ActionResult TestingLog()
+        {
+            return View();
+        }
+        public ActionResult LoginMe()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult LoginMe(Userlogin lo)
+        {
+            int sx = db.USERs.Where(x => x.Email == lo.Email).Count();
+            if (sx == 0)
+            {
+                ViewBag.msg = "Check your username and password";
+                return RedirectToAction("Login", lo);
+            }
+            else
+            {
+                var User = db.USERs.Where(x => x.Email == lo.Email && x.Password == lo.Password).FirstOrDefault();
+                //Create Session
+                Session["UserID"] = User.UserID;
+                Session["Email"] = User.Email;
+                Session["Firstname"] = User.FirstName;
+                Session["Lastname"] = User.LastName;
+                return RedirectToAction("MyDetails", "Insurance");
+            }
+        }
+        public ActionResult MyDetails()
+        {
+            USER u2 = db.USERs.Find(Convert.ToInt32(Session["UserID"]));
+
+            UserView ul = new UserView();
+            try
+            {
+                ul.Firstname = u2.FirstName;
+                ul.Lastname = u2.LastName;
+                ul.Email = u2.Email;
+            }
+            catch (Exception ex)
+            {
+                return View(ex);
+            }
+            return View(ul);
+
+        }
+        public ActionResult EditDetails()
+        {
+            USER u3 = db.USERs.Find(Convert.ToInt32(Session["UserID"]));
+            ModifyUser ul1 = new ModifyUser();
+            ul1.UserID = (Convert.ToInt32(Session["UserID"]));
+            ul1.Email = u3.Email;
+            ul1.Firstname = u3.FirstName;
+            ul1.Lastname = u3.LastName;
+            return View(ul1);
+        }
+        [HttpPost]
+        public ActionResult EditDetails(ModifyUser ul)
+        {
+            if (ModelState.IsValid)
+            {
+                USER u4 = new USER();
+                u4.UserID = (Convert.ToInt32(Session["UserID"]));
+                u4.FirstName = ul.Firstname;
+                u4.LastName = ul.Lastname;
+                u4.Email = ul.Email;
+                db.Entry(u4).State = EntityState.Modified;
+                db.SaveChanges();
+                ViewBag.msg = "User is Modified";
+                return RedirectToAction("MyDetails");
+            }
+            else
+            {
+                ViewBag.msg = "UserName is already exsting !";
+                return View(ul);
+            }
+        }
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            return RedirectToAction("LoginMe","Insurance");
+        }
+        /*public ActionResult Forgot(Request f)
+        {
+            var ckl = db.USERs.Where(x => x.Email == f.Email).Count();
+            if (ckl == 1)
+            {
+                var User1 = db.USERs.Where(x => x.Email == f.Email).FirstOrDefault();
+                return RedirectToAction("LoginMe");
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Forget(Request f)
+        {
+
+            var ckl = db.USERs.Where(x => x.Email == f.Email).Count();
+            if (ckl == 0)
+            {
+                return RedirectToAction("Index");
+            }
+            else 
+            {
+                var User1 = db.USERs.Where(x => x.Email == f.Email).FirstOrDefault();
+                return RedirectToAction("LoginMe");
+            }
+        }*/
+        public ActionResult Claim()
+        {
+            return View();
+        } 
+        [HttpPost]
+        public ActionResult Claim(UserClaim c)
+        {
+            USER uSER = new USER();
+            int check = db.USERs.Where(x => x.Email == c.Email).Count();
+
+            if (check == 1)
+            {
+                Claim cc = new Claim { ClaimID = c.ClaimID, Nature = c.Nature, Location = c.Location ,Date=c.Date};
+
+                if (ModelState.IsValid)
+                {
+                    cc.Date = DateTime.Now;
+                    cc.UserID = uSER.UserID;
+                    db.Claims.Add(cc);
+                    db.SaveChanges();
+                    return RedirectToAction("LoginMe", "Insurance");
+                }
+                else
+                {
+                    return RedirectToAction("Error");
+                }
+            }
+            return View();
+            
+            
         }
         
      }

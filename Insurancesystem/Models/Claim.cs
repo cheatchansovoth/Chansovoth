@@ -20,6 +20,6 @@ namespace Insurancesystem.Models
         public System.DateTime Date { get; set; }
         public int UserID { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual USER USER { get; set; }
     }
 }
