@@ -92,7 +92,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="InsuranceDBEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="InsuranceDBEntities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Cars" EntityType="Self.Car" />
     <EntitySet Name="Claims" EntityType="Self.Claim" />
     <EntitySet Name="CusContacts" EntityType="Self.CusContact" />

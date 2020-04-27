@@ -31,21 +31,22 @@
                         <li><a href="/Insurance/motorinformation">Motor Insurance</a></li>
                     </ul>
                 </li>
-                <li>@Html.ActionLink("Claim", "Claimform", "Insurance")</li>
+                <li>@Html.ActionLink("Claim", "Claiminsurance", "Insurance")</li>
                 <li>@Html.ActionLink("MyDetial", "MyDetails", "Insurance")</li>
             </ul>
             <ul class="loginprofile" id="loginprofile">
                 <li id="login">
-                    @Html.ActionLink("Login", "LoginMe", "Insurance",new {@id="a-login" }) 
+                    @Html.ActionLink("Login", "LoginMe", "Insurance", new { @id = "a-login" })
                     <i class="fa fa-users"></i>
-                            </li>
+                </li>
 
             </ul>
         </div>
 
     </nav>
-    <img id="logo" src="~/Content/image/logo.png" alt="logo.pgn" class="animated heartBeat"/>
+    <img id="logo" src="~/Content/image/logo.png" alt="logo.pgn" class="animated heartBeat" />
     @RenderBody()
+    @RenderSection("scripts", required: false)
     <!-- Footer -->
     <footer class="page-footer font-small cyan darken-3">
 

@@ -3,7 +3,7 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+    @ViewBag.msg 
     <div class="form-horizontal">
         <h1 style="margin-left:100px">Login</h1>
         <hr />

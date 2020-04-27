@@ -207,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="InsuranceDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="InsuranceDBEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cars" EntityType="Self.Car" />
           <EntitySet Name="Claims" EntityType="Self.Claim" />
           <EntitySet Name="CusContacts" EntityType="Self.CusContact" />
@@ -231,7 +231,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="InsuranceDBModelStoreContainer" CdmEntityContainer="InsuranceDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="InsuranceDBModelStoreContainer" CdmEntityContainer="InsuranceDBEntities3">
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="InsuranceDBModel.Car">
               <MappingFragment StoreEntitySet="Car">

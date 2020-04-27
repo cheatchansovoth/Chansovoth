@@ -3,6 +3,7 @@
 <div>
     <h1 style="margin-left:100px;">User Information</h1>
     <hr />
+    <h3 style="margin-left:100px;">Welcome @Session["Firstname"]</h3>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Firstname)
@@ -32,5 +33,5 @@
 </div>
 <p>
     @Html.ActionLink("Logout", "Logout")|
-    @Html.ActionLink("Change Password", "EditDetials")
+    @Html.ActionLink("Change Password", "EditDetails")
 </p>

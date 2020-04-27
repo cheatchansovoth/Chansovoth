@@ -13,10 +13,10 @@ namespace Insurancesystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class InsuranceDBEntities1 : DbContext
+    public partial class InsuranceDBEntities3 : DbContext
     {
-        public InsuranceDBEntities1()
-            : base("name=InsuranceDBEntities1")
+        public InsuranceDBEntities3()
+            : base("name=InsuranceDBEntities3")
         {
         }
     
@@ -31,14 +31,8 @@ namespace Insurancesystem.Models
         public virtual DbSet<Motorbike> Motorbikes { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
 
-        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.Userlogin> Userlogins { get; set; }
-
-        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.Registerview> Registerviews { get; set; }
+        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserClaim> UserClaims { get; set; }
 
         public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserView> UserViews { get; set; }
-
-        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.ModifyUser> ModifyUsers { get; set; }
-
-        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserClaim> UserClaims { get; set; }
     }
 }

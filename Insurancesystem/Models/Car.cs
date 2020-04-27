@@ -19,7 +19,7 @@ namespace Insurancesystem.Models
         public int Car1 { get; set; }
         public double CarValue { get; set; }
         public int CarRegisternumber { get; set; }
-        public Nullable<int> UserID { get; set; }
+        public int UserID { get; set; }
     
         public virtual USER USER { get; set; }
     }

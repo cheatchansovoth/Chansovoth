@@ -13,7 +13,7 @@ namespace Insurancesystem.Controllers
 {
     public class InsuranceController : Controller
     {
-        InsuranceDBEntities1 db = new InsuranceDBEntities1();
+        InsuranceDBEntities3 db = new InsuranceDBEntities3();
         // GET: Insurance
         public ActionResult Index()
         {
@@ -43,18 +43,7 @@ namespace Insurancesystem.Controllers
         {
             return View();
         }
-        private bool isValid(USER user)
-        {
-            return (user.UserID == 4);
-        }
-        [Authorize]
-        public ActionResult Admin(USER u1,Registerview re)
-        {
-            TempData["user"] = re;
-            TempData.Keep();
-            //Create Session
-            return View(db.USERs.ToList());
-        }
+
         public ActionResult carinformation()
         {
             return View();
@@ -186,7 +175,14 @@ namespace Insurancesystem.Controllers
                 Session["Email"] = User.Email;
                 Session["Firstname"] = User.FirstName;
                 Session["Lastname"] = User.LastName;
-                return RedirectToAction("MyDetails", "Insurance");
+                if (User.UserID == 4)
+                {
+                    return RedirectToAction("USER","Admin");
+                }
+                else
+                {   
+                return RedirectToAction("MyDetails");
+                }
             }
         }
         public ActionResult MyDetails()
@@ -209,16 +205,17 @@ namespace Insurancesystem.Controllers
         }
         public ActionResult EditDetails()
         {
-            USER u3 = db.USERs.Find(Convert.ToInt32(Session["UserID"]));
-            ModifyUser ul1 = new ModifyUser();
-            ul1.UserID = (Convert.ToInt32(Session["UserID"]));
-            ul1.Email = u3.Email;
-            ul1.Firstname = u3.FirstName;
-            ul1.Lastname = u3.LastName;
-            return View(ul1);
+            USER uSER = db.USERs.Find(Convert.ToInt32(Session["UserID"]));
+            UserView uv = new UserView();
+            uv.Firstname = uSER.FirstName;
+            uv.Lastname = uSER.LastName;
+            uv.Email = uSER.Email;
+            uv.Password = uSER.Password;
+            return View(uv);
+
         }
         [HttpPost]
-        public ActionResult EditDetails(ModifyUser ul)
+        public ActionResult EditDetails(UserView ul)
         {
             if (ModelState.IsValid)
             {
@@ -227,6 +224,7 @@ namespace Insurancesystem.Controllers
                 u4.FirstName = ul.Firstname;
                 u4.LastName = ul.Lastname;
                 u4.Email = ul.Email;
+                u4.Password = ul.Password;
                 db.Entry(u4).State = EntityState.Modified;
                 db.SaveChanges();
                 ViewBag.msg = "User is Modified";
@@ -241,7 +239,7 @@ namespace Insurancesystem.Controllers
         public ActionResult LogOut()
         {
             Session.Clear();
-            return RedirectToAction("LoginMe","Insurance");
+            return RedirectToAction("LoginMe", "Insurance");
         }
         /*public ActionResult Forgot(Request f)
         {
@@ -256,7 +254,6 @@ namespace Insurancesystem.Controllers
         [HttpPost]
         public ActionResult Forget(Request f)
         {
-
             var ckl = db.USERs.Where(x => x.Email == f.Email).Count();
             if (ckl == 0)
             {
@@ -268,24 +265,24 @@ namespace Insurancesystem.Controllers
                 return RedirectToAction("LoginMe");
             }
         }*/
-        public ActionResult Claim()
+        public ActionResult Claiminsurance()
         {
             return View();
-        } 
+        }
         [HttpPost]
-        public ActionResult Claim(UserClaim c)
+        public ActionResult Claiminsurance(UserClaim c)
         {
             USER uSER = new USER();
             int check = db.USERs.Where(x => x.Email == c.Email).Count();
 
             if (check == 1)
             {
-                Claim cc = new Claim { ClaimID = c.ClaimID, Nature = c.Nature, Location = c.Location ,Date=c.Date};
+                Claim cc = new Claim { ClaimID = c.ClaimID, Nature = c.Nature, Location = c.Location, Date = c.Date };
 
                 if (ModelState.IsValid)
                 {
                     cc.Date = DateTime.Now;
-                    cc.UserID = uSER.UserID;
+                    cc.UserID =Convert.ToInt32(Session["UserID"]);
                     db.Claims.Add(cc);
                     db.SaveChanges();
                     return RedirectToAction("LoginMe", "Insurance");
@@ -296,9 +293,9 @@ namespace Insurancesystem.Controllers
                 }
             }
             return View();
-            
-            
+
+
         }
-        
-     }
- }
+
+    }
+}

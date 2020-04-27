@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Insurancesystem.Models.Motorbike>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeOfUse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotorRegisternumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotorValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER.FirstName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModeOfUse)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotorRegisternumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotorValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MotorID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MotorID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MotorID })
+        </td>
+    </tr>
+}
+
+</table>

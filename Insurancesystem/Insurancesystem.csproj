@@ -140,6 +140,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\InsuranceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -263,7 +264,6 @@
     <Content Include="Views\Insurance\Index.cshtml" />
     <Content Include="Views\Insurance\About.cshtml" />
     <Content Include="Views\Insurance\onCreate.cshtml" />
-    <Content Include="Views\Insurance\Claimform.cshtml" />
     <Content Include="Views\Insurance\motorinformation.cshtml" />
     <Content Include="Views\Insurance\carinformation.cshtml" />
     <Content Include="Views\Insurance\Testing.cshtml" />
@@ -276,8 +276,20 @@
     <Content Include="Views\Insurance\MyDetails.cshtml" />
     <Content Include="Views\Insurance\LogOut.cshtml" />
     <Content Include="Views\Insurance\Admin.cshtml" />
+    <Content Include="Views\Insurance\Claiminsurance.cshtml" />
+    <Content Include="Views\Admin\CusContact.cshtml" />
+    <Content Include="Views\Admin\Car.cshtml" />
+    <Content Include="Views\Admin\Claim.cshtml" />
+    <Content Include="Views\Admin\Motorview.cshtml" />
+    <Content Include="Views\Admin\USER.cshtml" />
+    <Content Include="Views\Admin\RemoveUser.cshtml" />
+    <Content Include="Views\Admin\ModifyUser.cshtml" />
+    <Content Include="Views\Insurance\EditDetails.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+    <Folder Include="Views\View\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

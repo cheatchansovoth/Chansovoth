@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Insurancesystem.Models.CusContact>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CusID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CusID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CusID })
+        </td>
+    </tr>
+}
+
+</table>
