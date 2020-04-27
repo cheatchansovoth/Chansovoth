@@ -34,5 +34,7 @@ namespace Insurancesystem.Models
         public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserClaim> UserClaims { get; set; }
 
         public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserView> UserViews { get; set; }
+
+        public System.Data.Entity.DbSet<Insurancesystem.ViewModel.UserCk> UserCks { get; set; }
     }
 }

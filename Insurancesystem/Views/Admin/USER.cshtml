@@ -1,5 +1,12 @@
 ﻿@model IEnumerable<Insurancesystem.Models.USER>
 
+    <div class="">
+        @Html.ActionLink("ClaimList", "Claim")|
+        @Html.ActionLink("Customer Contact", "CusContact")|
+        @Html.ActionLink("MotorList", "MotorView")| 
+        @Html.ActionLink("CarList", "Car")
+
+    </div>
 <table class="table">
     <tr>
         <th>
@@ -20,29 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.UserID)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FirstName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.LastName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Email)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Password)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "ModifyUser", new { id = item.UserID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
-        @Html.ActionLink("Delete", "RemoveUser", new { id = item.UserID })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                | @Html.ActionLink("Edit", "ModifyUser", new { id = item.UserID }) |
+            </td>
+        </tr>
+    }
 
 </table>
