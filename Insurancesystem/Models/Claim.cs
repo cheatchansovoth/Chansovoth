@@ -11,11 +11,9 @@ namespace Insurancesystem.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Claim
     {
-        [Key]
         public int ClaimID { get; set; }
         public string Nature { get; set; }
         public string Location { get; set; }

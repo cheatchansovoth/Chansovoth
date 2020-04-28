@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Insurancesystem.Controllers;
 using Insurancesystem.Models;
 using Insurancesystem.ViewModel;
+using System.Data.Entity;
 
 namespace Insurancesystem.Controllers
 {
@@ -21,13 +22,15 @@ namespace Insurancesystem.Controllers
         public ActionResult ResetPassword(UserCk uc)
         {
             var check = db.USERs.Where(x => x.Email == uc.Email).Count();
+            TempData["user"] = uc;
+            TempData.Keep();
             if (check == 0)
             {
                 return RedirectToAction("LoginMe", "Insurance");
             }
             else
             {
-                return RedirectToAction("Index", "Insurance");
+                return RedirectToAction("PwChange", "User");
             }
 
 

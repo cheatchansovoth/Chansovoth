@@ -135,11 +135,11 @@ h1 {
     font-size:20px;
     margin:20px;
 }
-.slider
-{
-    width:1080px;
-    background-color:white;
-    margin:200px;
+.slider {
+    width: 1080px;
+    background-color: white;
+    margin: 30px;
+    margin-left: 250px;
 }
 
 .unorderlist ul li {
@@ -321,7 +321,8 @@ ul li {
         color: aliceblue;
         font-size: 50px;
         margin: 100px;
-        font-family: Museo-Sans-Rounded-300,sans-serif;
+        padding:10px;
+        font-family: 'Indie Flower', cursive;
     }
 .motor-table  {
     padding:150px;
@@ -421,4 +422,18 @@ body p {
     cursor: pointer;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+}
+#myCarousel {
+    width: 720px;
+}
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 300px;
+}
+.title-banner {
+    padding-bottom: 300px;
+    font-family: Indie Flower;
+    padding: 40px;
 }
