@@ -11,9 +11,15 @@ namespace Insurancesystem.ViewModel
 
         [Key]
         public int ClaimID { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         public string Nature { get; set; }
+        [Required]
         public string Location { get; set; }
+        [Required]
         public System.DateTime Date { get; set; }
         public int UserID { get; set; }
     }

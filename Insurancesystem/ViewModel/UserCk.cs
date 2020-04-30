@@ -10,6 +10,9 @@ namespace Insurancesystem.ViewModel
     {
         [Key]
         public int UserID { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

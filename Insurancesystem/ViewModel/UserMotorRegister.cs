@@ -15,10 +15,13 @@ namespace Insurancesystem.ViewModel
         [Required]
         public string Lastname { get; set; }
         [Required]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
         [Required]
+        [Compare("Password", ErrorMessage = "Password doesnt match!!")]
         public string Repassword { get; set; }
         [Required]
         public string ModeOfUse { get; set; }

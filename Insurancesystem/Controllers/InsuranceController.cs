@@ -72,6 +72,12 @@ namespace Insurancesystem.Controllers
                 TempData.Keep();
                 return RedirectToAction("Regcar");
             }
+            else
+            {
+                TempData["Message"]="This email has been used.Please try another email";
+                return RedirectToAction("Register", "Insurance");
+                
+            }
             return View(re);
         }
         public ActionResult Regcar()
@@ -99,6 +105,7 @@ namespace Insurancesystem.Controllers
                 car.UserID = u.UserID;
                 db.Cars.Add(car);
                 db.SaveChanges();
+                return RedirectToAction("LoginMe", "Insurance");
             }
 
             return View();
@@ -120,8 +127,11 @@ namespace Insurancesystem.Controllers
             }
             else
             {
-                return View(reg);
+                TempData["Message"] = "This email has been used.Please try another email";
+                return RedirectToAction("Register", "Insurance");
+               
             }
+            return View(reg);
         }
         public ActionResult MotorRegister()
         {
@@ -146,11 +156,12 @@ namespace Insurancesystem.Controllers
                 mk.UserID = u.UserID;
                 db.Motorbikes.Add(mk);
                 db.SaveChanges();
+                return RedirectToAction("LoginMe", "Insurance");
 
             }
             return View();
         }
-        public ActionResult TestingLog()
+        public ActionResult TestingLog()    
         {
             return View();
         }
@@ -164,8 +175,8 @@ namespace Insurancesystem.Controllers
             int sx = db.USERs.Where(x => x.Email == lo.Email).Count();
             if (sx == 0)
             {
-                ViewBag.msg = "Check your username and password";
-                return RedirectToAction("Login", lo);
+                TempData["Message"] = "Check your username and password";
+                return RedirectToAction("LoginMe");
             }
             else
             {
@@ -192,9 +203,18 @@ namespace Insurancesystem.Controllers
             UserView ul = new UserView();
             try
             {
-                ul.Firstname = u2.FirstName;
-                ul.Lastname = u2.LastName;
-                ul.Email = u2.Email;
+                if (ul.Firstname == null)
+                {
+                    TempData["Message"] = "User required to login!!";
+                    return RedirectToAction("LoginMe","Insurance");
+                }
+                else
+                {
+                    ul.Firstname = u2.FirstName;
+                    ul.Lastname = u2.LastName;
+                    ul.Email = u2.Email;
+                }
+                
             }
             catch (Exception ex)
             {

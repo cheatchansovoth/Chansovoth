@@ -30,5 +30,6 @@ namespace Insurancesystem.Models
         public virtual DbSet<CusContact> CusContacts { get; set; }
         public virtual DbSet<Motorbike> Motorbikes { get; set; }
         public virtual DbSet<USER> USERs { get; set; }
+
     }
 }

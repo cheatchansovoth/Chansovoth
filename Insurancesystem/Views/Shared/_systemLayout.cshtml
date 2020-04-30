@@ -32,12 +32,15 @@
                     </ul>
                 </li>
                 <li>@Html.ActionLink("Claim", "Claiminsurance", "Insurance")</li>
-                <li>@Html.ActionLink("MyDetial", "MyDetails", "Insurance")</li>
+                <li>@Html.ActionLink("MyDetails", "MyDetails", "Insurance")</li>
             </ul>
             <ul class="loginprofile" id="loginprofile">
                 <li id="login">
-                    @Html.ActionLink("Login", "LoginMe", "Insurance", new { @id = "a-login" })
-                    <i class="fa fa-users"></i>
+                    <div id="a-login">
+                        @Html.ActionLink("Login", "LoginMe", "Insurance", new { @id = "a-login" })
+                        <i class="fa fa-users"></i>
+                    </div>
+                        
                 </li>
 
             </ul>

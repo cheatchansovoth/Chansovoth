@@ -22,7 +22,6 @@ namespace Insurancesystem.Controllers
         public ActionResult ResetPassword(UserCk uc)
         {
             var check = db.USERs.Where(x => x.Email == uc.Email).Count();
-            TempData["user"] = uc;
             TempData.Keep();
             if (check == 0)
             {
@@ -35,5 +34,26 @@ namespace Insurancesystem.Controllers
 
 
         }
+        /*public ActionResult Forgotpassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Forgotpassword(forpass pw)
+        {
+            if (ModelState.IsValid)
+            {
+
+                USER u3 = new USER();
+
+                u3.Email = pw.Email;
+                u3.Password = pw.Password;
+                db.Entry(u3).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            return View();
+        }*/
     }
 }
